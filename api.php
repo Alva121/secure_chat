@@ -33,14 +33,14 @@ if($_GET['type']==2)
              echo json_encode($a);
         }
 
-    else "-1";
+    else echo "-1";
 }
 if($_GET['type']==3)
 {
     $conn = mysqli_connect('localhost','root','','smart_msg') or die('unable to connect');
+     $user=$_GET['user'];
 
-
-    $friends=mysqli_query($conn,"select * from user");
+    $friends=mysqli_query($conn,"select * from user u where u.email !='$user' and u.email not in (select f.friend from friend_list f where f.user='$user')");
     $a=array();
 
     while($row1= mysqli_fetch_assoc($friends))
@@ -65,7 +65,7 @@ if ($_GET['type']==5)
     $conn = mysqli_connect('localhost','root','','smart_msg') or die('unable to connect');
 
 
-    $users=mysqli_query($conn,"SELECT name,email,phone,public_key FROM user u ,friend_list f WHERE u.email=f.user and f.user='$email'");
+    $users=mysqli_query($conn,"SELECT name,email,phone,public_key FROM user u ,friend_list f WHERE u.email!='$email' and u.email=f.user and f.friend='$email' ");
     $a=array();
 
     while($row1= mysqli_fetch_assoc($users))
