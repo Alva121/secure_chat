@@ -7,7 +7,11 @@
         android:title="Chat List" />
     <item
         android:id="@+id/add_list"
-        android:checked="false"
+        android:checkable="true"
+        android:checked="true"
+        android:enabled="true"
         android:icon="@drawable/ic_person_black_24dp"
-        android:title="Profile" />
+        android:title="Profile"
+
+        android:visible="true" />
 </menu>

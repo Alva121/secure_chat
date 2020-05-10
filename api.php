@@ -35,7 +35,7 @@ if($_GET['type']==2)
 
     else echo "-1";
 }
-if($_GET['type']==3)
+if($_GET['type']==3)//ALL friend
 {
     $conn = mysqli_connect('localhost','root','','smart_msg') or die('unable to connect');
      $user=$_GET['user'];
@@ -59,7 +59,7 @@ if($_GET['type']==4)
     if($result)
         echo "0";else echo "-1";
 }
-if ($_GET['type']==5)
+if ($_GET['type']==5)//chat list
 {
     $email=$_GET['email'];
     $conn = mysqli_connect('localhost','root','','smart_msg') or die('unable to connect');

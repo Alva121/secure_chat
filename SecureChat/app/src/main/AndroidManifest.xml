@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".AllFriendList"></activity>
-        <activity android:name=".Main2Activity" />
+
         <activity android:name=".friendActivity" />
         <activity android:name=".Registration" />
         <activity android:name=".MainActivity" />

@@ -28,7 +28,8 @@ public class utils {
     }
 
     private static Map keyPair;
-    public static final String IP = "http://192.168.43.222/secure_chat/api.php";
+   // public static final String IP = "http://192.168.43.222/secure_chat/api.php";
+    public static final String IP = "http://192.168.43.141/secure_chat/api.php";
     public static final String TYPE1 = "?type=1";
     public static final String TYPE2 = "?type=2";
     public  String CUSER="";

@@ -18,6 +18,8 @@
         android:id="@+id/nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/nav"
+        app:itemIconTint="@drawable/navcustom"
+        app:itemTextColor="@drawable/navcustom"
+        app:menu="@menu/nav1"
         android:layout_alignParentBottom="true" />
 </RelativeLayout>

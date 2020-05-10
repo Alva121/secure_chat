@@ -42,7 +42,7 @@ EditText user,pass;
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                Toast.makeText(LoginActivity.this, response, Toast.LENGTH_SHORT).show();
+                             //   Toast.makeText(LoginActivity.this, response, Toast.LENGTH_SHORT).show();
                                 if(!response.equals("-1"))
                                 {
 

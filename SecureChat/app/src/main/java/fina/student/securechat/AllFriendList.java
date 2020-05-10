@@ -31,6 +31,7 @@ public class AllFriendList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_friend_list);
+        this.setTitle("Friend List");
         rv=findViewById(R.id.rv);
         bottomNavigationView=findViewById(R.id.nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -50,7 +51,7 @@ public class AllFriendList extends AppCompatActivity {
                         );
                         finish();
                 }
-                return false;
+                return true;
             }
         });
        // Toast.makeText(this, "AAA", Toast.LENGTH_SHORT).show();
@@ -59,7 +60,7 @@ public class AllFriendList extends AppCompatActivity {
 
                     @Override
                     public void onResponse(String response) {
-                      Toast.makeText(AllFriendList.this, response, Toast.LENGTH_SHORT).show();
+                     // Toast.makeText(AllFriendList.this, response, Toast.LENGTH_SHORT).show();
                         ArrayList<Friend>f=new ArrayList<>();
                         try {
                             JSONArray jsonArray=new JSONArray(response);

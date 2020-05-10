@@ -2,10 +2,12 @@ package fina.student.securechat;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     RecyclerView rv;
     EditText msg;
+    private ActionBar toolbar;
     Button send;
      String CUSER = utils.getInstance().CUSER;
      String FUSER = utils.getInstance().FUSER;
@@ -65,8 +68,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
        // Toast.makeText(this, CUSER+FUSER, Toast.LENGTH_SHORT).show();
         super.onCreate(savedInstanceState);
+      //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-
+        this.setTitle(FUSER);
             try {
                 new testAlg();
             } catch (GeneralSecurityException e) {
@@ -76,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         rv = findViewById(R.id.rv);
         msg = findViewById(R.id.msg);
         send = findViewById(R.id.send);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
 //        utils.getInstance().init();

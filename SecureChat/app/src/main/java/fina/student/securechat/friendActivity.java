@@ -31,7 +31,7 @@ BottomNavigationView bottomNavigationView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend);
-
+        this.setTitle("Chat List");
         utils.getInstance().privateKey=utils.getInstance().getPrivateKey(getApplicationContext());
        bottomNavigationView=findViewById(R.id.nav);
        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -51,7 +51,7 @@ BottomNavigationView bottomNavigationView;
                        );
                        finish();
                }
-               return false;
+               return true;
            }
        });
        rv=findViewById(R.id.rv);
