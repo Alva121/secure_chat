@@ -33,6 +33,7 @@ BottomNavigationView bottomNavigationView;
         setContentView(R.layout.activity_friend);
         this.setTitle("Chat List");
         utils.getInstance().privateKey=utils.getInstance().getPrivateKey(getApplicationContext());
+
        bottomNavigationView=findViewById(R.id.nav);
        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
            @Override

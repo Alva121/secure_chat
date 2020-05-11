@@ -2,7 +2,6 @@ package fina.student.securechat;
 
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         chat.setSender(CUSER);
         chat.setReceiver(FUSER);
         chat.setMsg(msg);
+        chat.setIsread(false);
         String key=utils.getInstance().generateKey();
         //String key="hai";
         chat.encrypt(key);
@@ -105,20 +105,30 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     chat chat = snapshot.getValue(fina.student.securechat.chat.class);
 
+
+                    if( chat.getReceiver().equals(CUSER) && chat.getSender().equals(FUSER))
+                    {
+                        DatabaseReference objRef =  ref2.child(snapshot.getKey());
+                        objRef.child("isread").setValue(true);
+                    }
                     if (chat.getReceiver().equals(FUSER) && chat.getSender().equals(CUSER) ||
                             chat.getReceiver().equals(CUSER) && chat.getSender().equals(FUSER)
 
                     ) {
 
+
+                        //ref2.updateChildren()
                         //      return null;
                         mChat.add(chat);
+
                         RecyclerAdpter recyclerAdpter = new RecyclerAdpter(mChat);
                         rv.setAdapter(recyclerAdpter);
                         recyclerAdpter.notifyDataSetChanged();
                         rv.scrollToPosition(mChat.size() - 1);
                     }
                 }
-
+                utils.getInstance().chatALL.clear();
+                utils.getInstance().chatALL.addAll(mChat);
             }
 
             @Override

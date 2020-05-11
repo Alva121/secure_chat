@@ -47,6 +47,14 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.viewholder
 
         holder.name.setText(friends.get(position).name);
         holder.f.setText(friends.get(position).name.toUpperCase().charAt(0)+"");
+        if(which==1)
+        {
+          //  utils.getInstance().chatme
+            for (chat chat : utils.getInstance().chatALL)
+            {
+                //chat.getReceiver()
+            }
+        }
 
 
     }
@@ -57,8 +65,9 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.viewholder
     }
 
     public class viewholder extends RecyclerView.ViewHolder {
-        TextView name,f;
+        TextView name,f,count;
         Button add;
+
         public viewholder(@NonNull final View itemView) {
             super(itemView);
             switch (which)
@@ -66,6 +75,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.viewholder
 
                 case 1:
                     name=itemView.findViewById(R.id.name);
+                    count=itemView.findViewById(R.id.new1);
                     f=itemView.findViewById(R.id.f);
                     itemView.setOnClickListener(new View.OnClickListener() {
                         @Override

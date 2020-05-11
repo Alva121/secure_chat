@@ -15,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.snackbar.Snackbar;
 
 public class Registration extends AppCompatActivity {
 Button reg;
@@ -31,6 +32,17 @@ EditText name,email,phone,pass;
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(name.getText().toString().isEmpty()||
+                    name.getText().toString().isEmpty()||
+                    phone.getText().toString().isEmpty()||
+                    email.getText().toString().isEmpty()||
+                    pass.getText().toString().isEmpty()
+                )
+                {
+                    Snackbar.make(view,"All fields are mandatory !!!!",Snackbar.LENGTH_LONG).show();
+                    return;
+                }
+
                 utils.getInstance().init();
                 Toast.makeText(Registration.this, "init", Toast.LENGTH_SHORT).show();
 
@@ -39,7 +51,7 @@ EditText name,email,phone,pass;
                         +"&phone="+phone.getText().toString()+"&email="+email.getText().toString()+"&password="+pass.getText().toString()+
                         "&public_key="+ Uri.encode(utils.getInstance().publicKey),
                         new Response.Listener<String>() {
-                    
+
                             @Override
                             public void onResponse(String response) {
                              if(response.equals("0"))
@@ -50,11 +62,11 @@ EditText name,email,phone,pass;
 
 
                                  Toast.makeText(Registration.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                                 
+
                                  finish();
-                                 
+
                              }else {
-                                 Toast.makeText(Registration.this, response, Toast.LENGTH_SHORT).show();
+                                 Toast.makeText(Registration.this, "Bad inputs", Toast.LENGTH_SHORT).show();
                              }
                             }
                         }, new Response.ErrorListener() {

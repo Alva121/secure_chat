@@ -33,7 +33,7 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="Email "
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName|textEmailAddress" />
 
     <EditText
         android:id="@+id/phone"
@@ -42,7 +42,7 @@
         android:layout_weight="1"
         android:ems="10"
         android:hint="phone"
-        android:inputType="textPersonName" />
+        android:inputType="number|textPersonName|textPhonetic" />
 
     <EditText
         android:id="@+id/password"

@@ -11,6 +11,15 @@ public class chat  implements Serializable {
         return key;
     }
 
+    public boolean isIsread() {
+        return isread;
+    }
+
+    public void setIsread(boolean isread) {
+        this.isread = isread;
+    }
+
+    private boolean isread;
     public void setKey(String key) {
         this.key = key;
     }
