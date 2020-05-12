@@ -127,8 +127,7 @@ public class MainActivity extends AppCompatActivity {
                         rv.scrollToPosition(mChat.size() - 1);
                     }
                 }
-                utils.getInstance().chatALL.clear();
-                utils.getInstance().chatALL.addAll(mChat);
+
             }
 
             @Override

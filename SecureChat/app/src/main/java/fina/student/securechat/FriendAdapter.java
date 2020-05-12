@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -44,7 +45,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.viewholder
 
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
-
+       int count =1;
         holder.name.setText(friends.get(position).name);
         holder.f.setText(friends.get(position).name.toUpperCase().charAt(0)+"");
         if(which==1)
@@ -52,7 +53,18 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.viewholder
           //  utils.getInstance().chatme
             for (chat chat : utils.getInstance().chatALL)
             {
+              if(chat.getSender().contentEquals( friends.get(position).getEmail()))
+              {
+                 if(! chat.isIsread())
+                 {
+                     holder.newcard.setVisibility(View.VISIBLE);
+                     holder.count.setText(""+count++);
+
+                 }
+              }
                 //chat.getReceiver()
+                if(count==1)
+                    holder.newcard.setVisibility(View.INVISIBLE);
             }
         }
 
@@ -67,6 +79,7 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.viewholder
     public class viewholder extends RecyclerView.ViewHolder {
         TextView name,f,count;
         Button add;
+        CardView newcard;
 
         public viewholder(@NonNull final View itemView) {
             super(itemView);
@@ -77,12 +90,14 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.viewholder
                     name=itemView.findViewById(R.id.name);
                     count=itemView.findViewById(R.id.new1);
                     f=itemView.findViewById(R.id.f);
+                    newcard=itemView.findViewById(R.id.newcard);
                     itemView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             utils.getInstance().FUSER=friends.get(getPosition()).email;
                             utils.getInstance().publicKey=friends.get(getPosition()).getPublic_key();
                             Intent i =new Intent(itemView.getContext(),MainActivity.class);
+                            newcard.setVisibility(View.INVISIBLE);
                             itemView.getContext().startActivity(i);
                         }
                     });

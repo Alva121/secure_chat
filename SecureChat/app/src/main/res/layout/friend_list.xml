@@ -64,6 +64,8 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:id="@+id/newcard"
+                    android:visibility="invisible"
                     app:cardCornerRadius="100dp">
 
                     <RelativeLayout
